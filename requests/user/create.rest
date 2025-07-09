@@ -1,0 +1,10 @@
+### Register new user 
+POST {{baseURL}}/user 
+Content-Type: application/json 
+Authorization: Bearer {{token}}
+
+{
+  "name": "admin2", 
+  "email": "admin2@admin.com", 
+  "password": "admin"
+}

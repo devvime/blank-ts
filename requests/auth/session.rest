@@ -1,0 +1,8 @@
+### Auth POST 
+{{baseURL}}/session 
+Content-Type: application/json
+
+{
+  "email": "admin2@admin.com", 
+  "password": "admin"
+}

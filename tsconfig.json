@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@common/*": ["common/*"],
+      "@app/*": ["application/*"],
+      "@database/*": ["common/database/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@guards/*": ["guards/*"],
+      "@shared/*": ["shared/*"],
+      "@types/*": ["types/*"]
+    },
+    "typeRoots": [
+      "src/common/@types"
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "sourceMap": true
+  }
+}

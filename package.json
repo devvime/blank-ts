@@ -1,0 +1,53 @@
+{
+  "name": "blank-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/main.js\"",
+    "migrate:dev": "npx prisma migrate dev --name",
+    "generate:dev": "prisma generate --generator client_dev",
+    "migrate:prod": "npx prisma migrate prod --name",
+    "generate:prod": "prisma generate --generator client_prod",
+    "build": "concurrently \"tsc\" \"npm run generate:prod\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "_moduleAliases": {
+    "@common": "dist/common",
+    "@app": "dist/application",
+    "@database": "dist/common/database",
+    "@middlewares": "dist/middlewares",
+    "@guards": "dist/middlewares",
+    "@shared": "dist/shared",
+    "@types": "dist/types"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "multer": "^2.0.1",
+    "prisma": "^6.11.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "@types/multer": "^2.0.0",
+    "concurrently": "^9.2.0",
+    "jest": "^30.0.4",
+    "nodemon": "^3.1.10",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3"
+  }
+}

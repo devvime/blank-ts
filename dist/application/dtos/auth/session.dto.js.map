@@ -1,0 +1,1 @@
+{"version":3,"file":"session.dto.js","sourceRoot":"","sources":["../../../../src/application/dtos/auth/session.dto.ts"],"names":[],"mappings":";;;;;;AAAA,4DAAoC;AACpC,yDAAyC;AAE5B,QAAA,cAAc,GAAG;IAC5B,IAAA,wBAAI,EAAC,OAAO,CAAC,CAAC,OAAO,EAAE,CAAC,QAAQ,EAAE;IAClC,IAAA,wBAAI,EAAC,UAAU,CAAC,CAAC,QAAQ,EAAE;IAC3B,aAAG,CAAC,MAAM;CACX,CAAC"}

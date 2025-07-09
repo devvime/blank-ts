@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "baseURL": "http://localhost:3333",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiZW1haWwiOiJhZG1pbjJAYWRtaW4uY29tIiwiaWF0IjoxNzUxNTkxNjAyLCJleHAiOjE3NTQxODM2MDIsInN1YiI6IjBlYzVkZGVjLTg3ZDctNDRiNy1hNzFjLTdhZDA0NGY0NTMyYSJ9.p_MSAc7R5sMh0EkiutozbyuxONFi3yLLb3gRB9A35g0"
+    }
+  }
+}
