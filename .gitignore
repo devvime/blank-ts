@@ -1,4 +1,5 @@
 /node_modules
 /dist
-src/common/database/prisma/generated
+/src/common/database/prisma/generated
+/prisma/dev/dev.db
 .env
