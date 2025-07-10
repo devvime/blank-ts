@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/user', isAuthenticated, userController.list);
 router.post('/user', isAuthenticated, createUserDTO, userController.create);
-router.put('/user', isAuthenticated, updateUserDTO, userController.update);
-router.delete('/user', isAuthenticated, userController.delete);
+router.put('/user/:id', isAuthenticated, updateUserDTO, userController.update);
+router.delete('/user/:id', isAuthenticated, userController.delete);
 
 export default router;

@@ -4,6 +4,7 @@ import listUserService from "@app/services/user/list.service";
 import createUserService from "@app/services/user/create.service";
 import updateUserService from "@app/services/user/update.service";
 import deleteUserService from "@app/services/user/delete.service";
+import { UpdateUser } from "@app/types/user/update.type";
 
 class UserController {
 
@@ -19,7 +20,7 @@ class UserController {
   }
 
   async update(req: Request, res: Response) {
-    const user: CreateUser = req.body;
+    const user: UpdateUser = req.body;
     const id = req.params.id;
     const result = await updateUserService.execute(id, user);
     res.json(result);

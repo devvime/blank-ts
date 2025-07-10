@@ -1,14 +1,13 @@
 import prisma from "@common/database/prisma/client";
-import { hash } from "bcryptjs";
-import { CreateUser } from "@app/types/user/create.type";
+import { UpdateUser } from "@app/types/user/update.type";
 
 class UpdateUserService {
 
-  async execute(id: string, user: CreateUser) {
+  async execute(id: string, user: UpdateUser) {
     try {
       const userAlreadyExists = await prisma.user.findFirst({
         where: {
-          email: user.email
+          id
         }
       });
 
@@ -16,24 +15,30 @@ class UpdateUserService {
         throw new Error("User is not found.");
       }
 
-      const passwordHash = await hash(user.password, 8);
       const result = await prisma.user.update({
         where: {
           id
         },
         data: {
           name: user.name,
-          email: user.email,
-          password: passwordHash
+          email: user.email
         },
         select: {
           id: true,
           name: true,
-          email: true
+          email: true,
+          created_at: true,
+          updated_at: true
         }
       });
 
-      return result;
+      return {
+        status: 200,
+        success: true,
+        error: false,
+        message: "User updated successfull.",
+        data: result
+      };
 
     } catch (error) {
       throw new Error(error);

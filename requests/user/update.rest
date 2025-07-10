@@ -1,0 +1,9 @@
+### Register new user 
+PUT {{baseURL}}/user/2d7f0cc6-7a15-4f82-be71-6f7c07fb1c72
+Content-Type: application/json 
+Authorization: Bearer {{token}}
+
+{
+  "name": "admin", 
+  "email": "admin@admin.com"
+}

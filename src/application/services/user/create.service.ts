@@ -27,11 +27,19 @@ class CreateUserService {
         select: {
           id: true,
           name: true,
-          email: true
+          email: true,
+          created_at: true
         }
       });
 
-      return result;
+      return {
+        status: 200,
+        success: true,
+        error: false,
+        message: "User registered successfull.",
+        data: result
+      };
+
     } catch (error) {
       throw new Error(error);
     }
