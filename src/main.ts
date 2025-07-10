@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import express from "express";
 import cors from 'cors';
 import { serverError } from "@shared/errors/server.error";
