@@ -1,0 +1,8 @@
+### Register new user 
+POST {{baseURL}}/recover-password
+Content-Type: application/json 
+Authorization: Bearer {{token}}
+
+{
+  "email": "admin2@admin.com"
+}
