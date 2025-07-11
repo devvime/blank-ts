@@ -1,5 +1,6 @@
 import prisma from "@common/database/prisma/client";
 import { sign } from "jsonwebtoken";
+import mailer from "@shared/utils/mailer";
 
 class RecoverPasswordService {
 
@@ -27,7 +28,7 @@ class RecoverPasswordService {
         expiresIn: "1h"
       });
 
-      const result = await prisma.passwordRecoveryToken.create({
+      await prisma.passwordRecoveryToken.create({
         data: {
           userId: user.id,
           valid: true,
@@ -35,7 +36,26 @@ class RecoverPasswordService {
         }
       });
 
-      // TO DO: Send email to user.email with token access
+      let result = undefined;
+
+      await mailer.send({
+        to: user.email,
+        subject: 'Recover password',
+        text: `Password recovery token: ${token}`
+      }, (error, info) => {
+        if (error) {
+          result = {
+            status: 500,
+            error: true,
+            success: false,
+            message: error
+          }
+        }
+      });
+
+      if (result !== undefined) {
+        return result;
+      }
 
       return {
         status: 200,
