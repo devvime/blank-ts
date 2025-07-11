@@ -24,7 +24,8 @@
     "@middlewares": "dist/middlewares",
     "@guards": "dist/middlewares",
     "@shared": "dist/shared",
-    "@types": "dist/types"
+    "@types": "dist/types",
+    "@useCases": "dist/application/useCases"
   },
   "dependencies": {
     "@prisma/client": "^6.11.1",

@@ -12,7 +12,8 @@
       "@middlewares/*": ["middlewares/*"],
       "@guards/*": ["guards/*"],
       "@shared/*": ["shared/*"],
-      "@types/*": ["types/*"]
+      "@types/*": ["types/*"],
+      "@useCases/*": ["application/useCases/*"]
     },
     "typeRoots": [
       "src/common/@types"

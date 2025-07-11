@@ -13,6 +13,9 @@ model User {
   name       String
   email      String
   password   String
+  superUser  Boolean
+  active     Boolean
+  ip         String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -25,7 +28,8 @@ model PasswordRecoveryToken {
   id         String   @id @default(uuid())
   User       User?    @relation("UserPasswordTokens", fields: [userId], references: [id])
   userId     String?
-  used       Boolean  @default(false)
+  valid      Boolean  @default(false)
+  token      String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 

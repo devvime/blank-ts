@@ -1,0 +1,10 @@
+### Register new user 
+POST {{baseURL}}/user/register 
+Content-Type: application/json 
+Authorization: Bearer {{token}}
+
+{
+  "name": "Victor", 
+  "email": "dihapp@outlook.com", 
+  "password": "admin"
+}

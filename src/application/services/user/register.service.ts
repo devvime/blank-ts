@@ -1,11 +1,12 @@
 import prisma from "@common/database/prisma/client";
 import { hash } from "bcryptjs";
-import { CreateUser } from "@app/types/user/create.type";
+import { RegisterUser } from "@app/types/user/register.type";
+import { Request } from "express";
 import userCase from "@app/useCases/user/user.case";
 
-class CreateUserService {
+class RegisterUserService {
 
-  async execute(user: CreateUser) {
+  async execute(user: RegisterUser, req: Request) {
     try {
       await userCase.userExistsVerify(user.email);
 
@@ -18,7 +19,7 @@ class CreateUserService {
           password: passwordHash,
           superUser: false,
           active: false,
-          ip: ''
+          ip: req.userIP
         },
         select: {
           id: true,
@@ -28,11 +29,13 @@ class CreateUserService {
         }
       });
 
+      await userCase.sendAccountVerifyEmail(user.email);
+
       return {
         status: 200,
         success: true,
         error: false,
-        message: "User registered successfull.",
+        message: `User registered successfull. Access your email (${user.email}) and verify your user account.`,
         data: result
       };
 
@@ -43,4 +46,4 @@ class CreateUserService {
 
 }
 
-export default new CreateUserService();
+export default new RegisterUserService();
