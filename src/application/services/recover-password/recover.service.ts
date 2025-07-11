@@ -42,27 +42,23 @@ class RecoverPasswordService {
         to: user.email,
         subject: 'Recover password',
         text: `Password recovery token: ${token}`
-      }, (error, info) => {
-        if (error) {
-          result = {
-            status: 500,
-            error: true,
-            success: false,
-            message: error
-          }
+      }).then(res => {
+        result = {
+          status: 200,
+          error: false,
+          success: true,
+          message: `Recovery token send to email: ${email}`
+        }
+      }).catch(err => {
+        result = {
+          error: true,
+          success: false,
+          status: 500,
+          data: err
         }
       });
 
-      if (result !== undefined) {
-        return result;
-      }
-
-      return {
-        status: 200,
-        error: false,
-        success: true,
-        message: `Recovery token send to email: ${email}`
-      }
+      return result;
     } catch (err) {
       return {
         error: true,

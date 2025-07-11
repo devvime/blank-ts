@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import { MailCallback } from '@shared/types/mail-callback.type';
 import { MailOptions } from '@shared/types/mail-options.type';
 
 class Mailer {
@@ -18,9 +17,9 @@ class Mailer {
     });
   }
 
-  async send(options: MailOptions, callBack: MailCallback) {
+  async send(options: MailOptions) {
     options.from = `${process.env.MAIL_NAME} <${process.env.MAIL_USER}>`;
-    await this.transporter.sendMail(options, callBack);
+    return await this.transporter.sendMail(options);
   }
 
 }
