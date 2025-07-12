@@ -26,6 +26,7 @@
     "noUnusedParameters": false,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "sourceMap": true
-  }
+    "sourceMap": true,
+  },
+  "exclude": ["**/*.test.ts", "**/__tests__/**"]
 }
