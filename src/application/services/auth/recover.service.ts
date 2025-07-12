@@ -1,25 +1,12 @@
 import prisma from "@common/database/prisma/client";
+import ApiError from "@shared/errors/api.error";
 import authCase from "@useCases/auth/recover-password.case";
 
 class RecoverPasswordService {
 
   async execute(email: string) {
-    const user = await prisma.user.findFirst({
-      where: {
-        email
-      }
-    });
-
-    if (user === null) {
-      return {
-        error: true,
-        success: false,
-        status: 404,
-        message: "User is not found."
-      }
-    }
-
     try {
+      const user = await authCase.findUser(email);
       const token = authCase.createToken(email, user.id);
 
       await prisma.passwordRecoveryToken.create({
@@ -30,16 +17,15 @@ class RecoverPasswordService {
         }
       });
 
-      let result = await authCase.sendTokenEmail(user.email, token);
+      await authCase.sendTokenEmail(user.email, token);
 
-      return result;
-    } catch (err) {
       return {
-        error: true,
-        success: false,
-        status: 500,
-        err
-      }
+        status: 200,
+        success: true,
+        message: `Recovery token send to email: ${email}`
+      };
+    } catch (err) {
+      throw new ApiError(err);
     }
   }
 

@@ -5,3 +5,8 @@ export const recoverPasswordDTO = [
   body("email").isEmail().notEmpty(),
   dto.verify,
 ];
+
+export const changePasswordDTO = [
+  body("password").isString().notEmpty(),
+  dto.verify,
+];

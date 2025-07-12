@@ -1,5 +1,5 @@
-### Register new user 
-POST {{baseURL}}/recover-password
+### Recover password
+POST {{baseURL}}/session/recover
 Content-Type: application/json 
 Authorization: Bearer {{token}}
 

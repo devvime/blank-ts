@@ -1,36 +1,35 @@
 import { Payload } from "@app/types/auth/payload.type";
 import prisma from "@common/database/prisma/client";
 import ApiError from "@shared/errors/api.error";
+import { hash } from "bcryptjs";
 import { verify } from "jsonwebtoken";
 
-class ActiveAccountService {
-  async execute(token: string) {
+class VerifyRecoverTokenAndChangePassword {
+
+  async execute(password: string, token: string) {
     try {
       const verified = verify(token, process.env.JWT_SECRET) as Payload;
-      const user = await prisma.user.findFirst({ where: { email: verified['email'] } });
-
-      if (!user) {
-        throw new ApiError('User is not found', 404);
-      }
+      const passwordHash = await hash(password, 8);
 
       await prisma.user.update({
         where: {
-          id: user.id
+          id: verified.sub
         },
         data: {
-          active: true
+          password: passwordHash
         }
       });
 
       return {
         success: true,
         status: 200,
-        message: "Account activated successfull."
+        message: "Password updated successfull."
       };
     } catch (err) {
       throw new ApiError(err);
     }
   }
+
 }
 
-export default new ActiveAccountService();
+export default new VerifyRecoverTokenAndChangePassword();

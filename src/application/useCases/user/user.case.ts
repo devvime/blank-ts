@@ -31,7 +31,8 @@ class UserCase {
     await mailer.send({
       to: email,
       subject: 'Account verification',
-      text: `verify accont with token: ${token}`
+      text: 'verify accont with token:',
+      html: `<a href="${process.env.MAIL_LINK_ACTIVE_USER_URL}/${token}" target="_blank">Clique here</a> for activate your account`
     });
   }
 }
