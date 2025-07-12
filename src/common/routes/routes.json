@@ -1,0 +1,117 @@
+{
+  "authentication": {
+    "routes": [
+      {
+        "name": "Login",
+        "description": "Get authentication token for login.",
+        "method": "POST",
+        "path": "/session",
+        "authToken": false,
+        "payload": {
+          "email": "admin@admin.com",
+          "password": "admin"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "Recover password",
+        "description": "Request token for password recover.",
+        "method": "POST",
+        "path": "/session/recover",
+        "authToken": false,
+        "payload": {
+          "email": "admin@admin.com"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "Change password",
+        "description": "Change password with recovery token",
+        "method": "POST",
+        "path": "/session/recover/:token",
+        "authToken": false,
+        "payload": {
+          "password": "admin"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "Active account",
+        "description": "Activate account with token sent to user's email.",
+        "method": "GET",
+        "path": "/session/active/:token",
+        "authToken": false,
+        "payload": {},
+        "queryParams": {}
+      }
+    ]
+  },
+  "user": {
+    "routes": [
+      {
+        "name": "Register",
+        "description": "Register a new account.",
+        "method": "POST",
+        "path": "/user/register",
+        "authToken": false,
+        "payload": {
+          "name": "Steve",
+          "email": "user@mail.com",
+          "password": "123456"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "Create",
+        "description": "Create a new account.",
+        "method": "POST",
+        "path": "/user",
+        "authToken": true,
+        "payload": {
+          "name": "Steve",
+          "email": "user@mail.com",
+          "password": "123456"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "Update",
+        "description": "Update user account.",
+        "method": "PUT",
+        "path": "/user",
+        "authToken": true,
+        "payload": {
+          "name": "Steve",
+          "email": "user@mail.com",
+          "password": "123456"
+        },
+        "queryParams": {}
+      },
+      {
+        "name": "List",
+        "description": "List users accounts.",
+        "method": "GET",
+        "path": "/user",
+        "authToken": true,
+        "payload": {},
+        "queryParams": {
+          "id": "kjubagyuwt783rt8673t3tr",
+          "name": "steve",
+          "email": "user@mail.com",
+          "created_at": "2001-01-01",
+          "updated_at": "2001-01-01",
+          "active": true
+        }
+      },
+      {
+        "name": "Delete",
+        "description": "Delete user account.",
+        "method": "DELETE",
+        "path": "/user/:id",
+        "authToken": true,
+        "payload": {},
+        "queryParams": {}
+      }
+    ]
+  }
+}
