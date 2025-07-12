@@ -1,5 +1,4 @@
 import { describe, it, expect } from '@jest/globals';
-import registerUserService from "../register.service";
 
 const user = {
   name: 'Steve',
