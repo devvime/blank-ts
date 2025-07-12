@@ -3,6 +3,7 @@ import { hash } from "bcryptjs";
 import { RegisterUser } from "@app/types/user/register.type";
 import { Request } from "express";
 import userCase from "@app/useCases/user/user.case";
+import ApiError from "@shared/errors/api.error";
 
 class RegisterUserService {
 
@@ -40,7 +41,7 @@ class RegisterUserService {
       };
 
     } catch (error) {
-      throw new Error(error);
+      throw new ApiError(error);
     }
   }
 

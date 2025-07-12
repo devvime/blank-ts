@@ -1,5 +1,6 @@
 import prisma from "@common/database/prisma/client";
 import { ListUserParams } from "@app/types/user/list.type";
+import ApiError from "@shared/errors/api.error";
 
 class ListUserService {
 
@@ -17,7 +18,7 @@ class ListUserService {
       });
       return users;
     } catch (error) {
-      throw new Error(error);
+      throw new ApiError(error);
     }
   }
 

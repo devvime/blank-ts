@@ -18,7 +18,7 @@ class Mailer {
   }
 
   async send(options: MailOptions) {
-    options.from = `${process.env.MAIL_NAME} <${process.env.MAIL_USER}>`;
+    options.from = `${process.env.MAIL_NAME}  <${process.env.MAIL_USER}>`;
     return await this.transporter.sendMail(options);
   }
 

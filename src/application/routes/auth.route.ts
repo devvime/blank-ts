@@ -6,7 +6,7 @@ import { recoverPasswordDTO } from "@app/dtos/recover-password/recover.dto";
 
 const router = Router();
 
-router.get('/session', authSessionDTO, authController.session);
+router.post('/session', authController.session);
 router.post('/recover-password', recoverPasswordDTO, authController.recoverPassword);
 
 export default router;

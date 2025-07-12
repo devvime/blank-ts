@@ -1,4 +1,5 @@
 import prisma from "@common/database/prisma/client";
+import ApiError from "@shared/errors/api.error";
 import mailer from "@shared/utils/mailer";
 import { sign } from "jsonwebtoken";
 
@@ -10,9 +11,8 @@ class UserCase {
         email
       }
     });
-
     if (userAlreadyExists) {
-      throw new Error("Email already exists.");
+      throw new ApiError("Email already exists.");
     }
   }
 

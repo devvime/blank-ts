@@ -4,6 +4,7 @@ import { serverError } from "@shared/errors/server.error";
 
 import authRoutes from "@app/routes/auth.route";
 import userRoutes from "@app/routes/user.route";
+import { errorMiddleware } from "@middlewares/error.middleware";
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,8 @@ app.use(cors());
 
 app.use(authRoutes);
 app.use(userRoutes);
+
+app.use(errorMiddleware);
 
 app.listen(process.env.PORT || 3333, () => {
   console.log(`Server running on port: ${process.env.PORT || '3333'}`)

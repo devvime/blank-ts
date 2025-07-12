@@ -2,6 +2,7 @@ import prisma from "@common/database/prisma/client";
 import { hash } from "bcryptjs";
 import { CreateUser } from "@app/types/user/create.type";
 import userCase from "@app/useCases/user/user.case";
+import ApiError from "@shared/errors/api.error";
 
 class CreateUserService {
 
@@ -37,7 +38,7 @@ class CreateUserService {
       };
 
     } catch (error) {
-      throw new Error(error);
+      throw new ApiError(error);
     }
   }
 

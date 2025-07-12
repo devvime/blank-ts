@@ -1,5 +1,6 @@
 import prisma from "@common/database/prisma/client";
 import { UpdateUser } from "@app/types/user/update.type";
+import ApiError from "@shared/errors/api.error";
 
 class UpdateUserService {
 
@@ -12,7 +13,7 @@ class UpdateUserService {
       });
 
       if (!userAlreadyExists) {
-        throw new Error("User is not found.");
+        throw new ApiError("User is not found.");
       }
 
       const result = await prisma.user.update({
@@ -41,7 +42,7 @@ class UpdateUserService {
       };
 
     } catch (error) {
-      throw new Error(error);
+      throw new ApiError(error);
     }
   }
 

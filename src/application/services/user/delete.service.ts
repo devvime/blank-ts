@@ -1,5 +1,6 @@
 import prisma from "@common/database/prisma/client";
 import { DeleteUser } from "@app/types/user/delete.type";
+import ApiError from "@shared/errors/api.error";
 
 class RemoveUserService {
   async execute({ user_id }: DeleteUser) {
@@ -12,7 +13,7 @@ class RemoveUserService {
         });
 
         if (!exists) {
-          throw new Error("User is not found");
+          throw new ApiError("User is not found");
         }
 
         const removeUser = await prisma.user.delete({
@@ -30,7 +31,7 @@ class RemoveUserService {
         };
       }
     } catch (err) {
-      throw new Error(err);
+      throw new ApiError(err);
     }
   }
 }
