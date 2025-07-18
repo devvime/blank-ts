@@ -35,7 +35,7 @@ class AuthController {
 
   async verify(req: Request, res: Response) {
     res.json({
-      sussess: true,
+      success: true,
       message: "Session is active."
     });
   }
