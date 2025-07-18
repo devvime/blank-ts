@@ -43,6 +43,18 @@
         "authToken": false,
         "payload": {},
         "queryParams": {}
+      },
+      {
+        "name": "Verify session",
+        "description": "Verify session.",
+        "method": "GET",
+        "path": "/session/active",
+        "authToken": false,
+        "payload": {},
+        "queryParams": {},
+        "headers": {
+          "Authorization": "Bearer {{token}}"
+        }
       }
     ]
   },
@@ -72,7 +84,10 @@
           "email": "user@mail.com",
           "password": "123456"
         },
-        "queryParams": {}
+        "queryParams": {},
+        "headers": {
+          "Authorization": "Bearer {{token}}"
+        }
       },
       {
         "name": "Update",
@@ -85,7 +100,10 @@
           "email": "user@mail.com",
           "password": "123456"
         },
-        "queryParams": {}
+        "queryParams": {},
+        "headers": {
+          "Authorization": "Bearer {{token}}"
+        }
       },
       {
         "name": "List",
@@ -101,6 +119,9 @@
           "created_at": "2001-01-01",
           "updated_at": "2001-01-01",
           "active": true
+        },
+        "headers": {
+          "Authorization": "Bearer {{token}}"
         }
       },
       {
@@ -110,7 +131,10 @@
         "path": "/user/:id",
         "authToken": true,
         "payload": {},
-        "queryParams": {}
+        "queryParams": {},
+        "headers": {
+          "Authorization": "Bearer {{token}}"
+        }
       }
     ]
   }

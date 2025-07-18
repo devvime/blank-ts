@@ -33,6 +33,13 @@ class AuthController {
     res.json(result);
   }
 
+  async verify(req: Request, res: Response) {
+    res.json({
+      sussess: true,
+      message: "Session is active."
+    });
+  }
+
 }
 
 export default new AuthController();
